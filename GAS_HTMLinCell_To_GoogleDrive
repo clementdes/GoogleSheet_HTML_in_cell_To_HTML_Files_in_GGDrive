@@ -1,0 +1,26 @@
+/**
+* HTML in cell TO Markdown
+* Don't forget to change the Google Drive folder ID
+* Don't forget to change the name of the tab containing HTML
+*/
+
+function exportHtmlFiles() {
+  const folderId = '1TFTfjurXMRXyApQiu0YnaZSyit9969sq';  // Remplacez par l'ID de votre dossier Drive où vous voulez sauvegarder les fichiers.
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('HTML only');  // Obtenez la feuille spécifique par son nom.
+  if (!sheet) {
+    Logger.log('Sheet "HTML only" not found.');
+    return;  // Arrête le script si la feuille n'est pas trouvée.
+  }
+  const range = sheet.getDataRange();
+  const values = range.getValues();
+  const folder = DriveApp.getFolderById(folderId);
+
+  values.forEach((row, index) => {
+    if (row[0].trim() !== '') {  // Vérifiez que la cellule n'est pas vide.
+      const htmlContent = row[0];
+      const file = folder.createFile('File_' + (index + 1) + '.html', htmlContent, MimeType.HTML);
+      Logger.log('File created: ' + file.getUrl());
+    }
+  });
+}
