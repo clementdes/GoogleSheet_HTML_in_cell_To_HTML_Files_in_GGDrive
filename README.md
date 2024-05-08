@@ -1,4 +1,4 @@
-# GoogleSheet_HTMLincell_To_GoogleDriveFolder
+# GoogleSheet_HTML_in_cell_To_HTML_Files_in_GGDrive
 This Google App Script allows you to export HTML files per line containing HTML in a google Drive Folder<br><br>
 ie. if you have a GoogleSheet containing multipole lines ith HTML in it, the script will export each cell containing HTML into a .HTML file in a Google Drive Folder.<br><br>
 To start : <br>
